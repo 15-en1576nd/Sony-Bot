@@ -64,8 +64,8 @@ module.exports = {
         const row3 = new MessageActionRow()
         .addComponents(
             new MessageButton()
-                .setCustomId('none')
-                .setEmoji('934016556738961438')
+                .setCustomId('home')
+                .setEmoji('🏠')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
@@ -125,6 +125,11 @@ module.exports = {
             if (i.customId === 'enter') {
                 tv.send("Enter").catch(console.error)
                 embed.setDescription('Last Action Used: `Enter`');
+                await i.update({ embeds: [embed] });
+            }
+            if (i.customId === 'home') {
+                tv.send("Home").catch(console.error)
+                embed.setDescription('Last Action Used: `Home`');
                 await i.update({ embeds: [embed] });
             }
         });
