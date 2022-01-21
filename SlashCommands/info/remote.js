@@ -51,7 +51,7 @@ module.exports = {
         )
         .addComponents(
             new MessageButton()
-                .setCustomId('enter')
+                .setCustomId('confirm')
                 .setEmoji('839998964752973866')
                 .setStyle('PRIMARY'),
         )
@@ -122,9 +122,9 @@ module.exports = {
                 embed.setDescription('Last Action Used: `Off`');
                 await i.update({ embeds: [embed] });
             }
-            if (i.customId === 'enter') {
-                tv.send("Enter").catch(console.error)
-                embed.setDescription('Last Action Used: `Enter`');
+            if (i.customId === 'confirm') {
+                tv.send("Confirm").catch(console.error)
+                embed.setDescription('Last Action Used: `Confirm`');
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'home') {
