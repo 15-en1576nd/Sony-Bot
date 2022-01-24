@@ -119,7 +119,10 @@ module.exports = {
             
             const embed = new MessageEmbed()
         .setTitle('Tv Remote')
-        .setDescription('Select an option ');
+        .setDescription('Select an option')
+        .setFooter('Made by Omen')
+        .setColor('#ec2234')
+        .setThumbnail('https://cdn.discordapp.com/attachments/904003288213631037/935099744047472680/Omen-Logo.png')
 
         await interaction.followUp({ embeds: [embed], components: [row, row2, row3] });
 
