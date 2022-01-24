@@ -20,8 +20,10 @@ module.exports = {
     run: async (client, interaction, args) => {
         const Bravia = require('bravia')
         const tv = new Bravia('10.0.2.221', '80', '0000');
+        // const tv = new Bravia('10.0.0.161', '80', '0000'); // Yanick
         const cmdd = interaction.options.getString('command');
         if (cmdd == 'DemoMode') return interaction.followUp({ content: 'nee'});
+        console.log(cmdd)
         tv.send(cmdd).catch(console.error);
         await interaction.followUp({ content: cmdd });
             
