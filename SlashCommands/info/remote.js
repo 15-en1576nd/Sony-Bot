@@ -2,6 +2,7 @@ const { Client, CommandInteraction } = require("discord.js");
 const { MessageEmbed } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { MessageActionRow, MessageButton } = require('discord.js');
+const { TV } = require('sony-con-troller')
 
 module.exports = {
     ...new SlashCommandBuilder()
@@ -15,9 +16,19 @@ module.exports = {
      */
     run: async (client, interaction, args) => {
         const Bravia = require('bravia')
-        const tv = new Bravia('10.0.2.221', '80', '0000');
+        const tv = new Bravia('10.0.2.221', '80', '0000'); // Omen
+        const tv2 = new TV('10.0.2.221')
+        // const tv = new Bravia('10.0.0.161', '80', '0000'); // Yanick
+        // const tv2 = new TV('10.0.0.161')
+        tv2.backendURL = ""
         
         const row = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setCustomId('none1')
+                .setEmoji('934016556738961438')
+                .setStyle('PRIMARY'),
+        )
         .addComponents(
             new MessageButton()
                 .setCustomId('on')
@@ -45,6 +56,12 @@ module.exports = {
         const row2 = new MessageActionRow()
         .addComponents(
             new MessageButton()
+                .setCustomId('none2')
+                .setEmoji('934016556738961438')
+                .setStyle('PRIMARY'),
+        )
+        .addComponents(
+            new MessageButton()
                 .setCustomId('left')
                 .setEmoji('864550244276764682')
                 .setStyle('PRIMARY'),
@@ -61,7 +78,19 @@ module.exports = {
                 .setEmoji('864550244103880735')
                 .setStyle('PRIMARY'),
         )
+        .addComponents(
+            new MessageButton()
+                .setCustomId('browser')
+                .setEmoji('934060086131838986')
+                .setStyle('PRIMARY'),
+        )
         const row3 = new MessageActionRow()
+        .addComponents(
+            new MessageButton()
+                .setCustomId('none3')
+                .setEmoji('934016556738961438')
+                .setStyle('PRIMARY'),
+        )
         .addComponents(
             new MessageButton()
                 .setCustomId('home')
@@ -76,14 +105,20 @@ module.exports = {
         )
         .addComponents(
             new MessageButton()
-                .setCustomId('none2')
-                .setEmoji('934016556738961438')
+                .setCustomId('application')
+                .setEmoji('🎮')
+                .setStyle('PRIMARY'),
+        )
+        .addComponents(
+            new MessageButton()
+                .setCustomId('rick')
+                .setEmoji('⭐')
                 .setStyle('PRIMARY'),
         )
             
             const embed = new MessageEmbed()
         .setTitle('Tv Remote')
-        .setDescription('Select an option ' + interaction.user.id);
+        .setDescription('Select an option ');
 
         await interaction.followUp({ embeds: [embed], components: [row, row2, row3] });
 
@@ -130,6 +165,21 @@ module.exports = {
             if (i.customId === 'home') {
                 tv.send("Home").catch(console.error)
                 embed.setDescription('Last Action Used: `Home`');
+                await i.update({ embeds: [embed] });
+            }
+            if (i.customId === 'application') {
+                tv.send("ApplicationLauncher").catch(console.error)
+                embed.setDescription('Last Action Used: `Application Launcher`');
+                await i.update({ embeds: [embed] });
+            }
+            if (i.customId === 'rick') {
+                embed.setDescription('Last Action Used: `Rick`');
+                tv2.rickRoll()
+                await i.update({ embeds: [embed] });
+            }
+            if (i.customId === 'browser') {
+                embed.setDescription('Last Action Used: `Browser`');
+                tv2.browser()
                 await i.update({ embeds: [embed] });
             }
         });
