@@ -33,19 +33,19 @@ module.exports = {
         .addComponents(
             new MessageButton()
                 .setCustomId('on')
-                .setEmoji('496493394831343627')
+                .setEmoji('934228083244941333')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
             .setCustomId('up')
-            .setEmoji('864550244229316658')
+            .setEmoji('934233169467674635')
             .setStyle('PRIMARY'),
             )
         .addComponents(
             new MessageButton()
                 .setCustomId('off')
-                .setEmoji('827688850162974720')
+                .setEmoji('935088007906746368')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
@@ -64,25 +64,25 @@ module.exports = {
         .addComponents(
             new MessageButton()
                 .setCustomId('left')
-                .setEmoji('864550244276764682')
+                .setEmoji('934233059597910027')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('confirm')
-                .setEmoji('839998964752973866')
+                .setEmoji('934224526659711066')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('right')
-                .setEmoji('864550244103880735')
+                .setEmoji('934233117542211585')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('browser')
-                .setEmoji('934060086131838986')
+                .setEmoji('935089016058040402')
                 .setStyle('PRIMARY'),
         )
         const row3 = new MessageActionRow()
@@ -95,25 +95,25 @@ module.exports = {
         .addComponents(
             new MessageButton()
                 .setCustomId('home')
-                .setEmoji('🏠')
+                .setEmoji('934225611751325708')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('down')
-                .setEmoji('864550244192747561')
+                .setEmoji('934233246588366859')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('application')
-                .setEmoji('🎮')
+                .setEmoji('934230458730946650')
                 .setStyle('PRIMARY'),
         )
         .addComponents(
             new MessageButton()
                 .setCustomId('rick')
-                .setEmoji('⭐')
+                .setEmoji('934229671460110426')
                 .setStyle('PRIMARY'),
         )
             
@@ -179,7 +179,7 @@ module.exports = {
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'browser') {
-                embed.setDescription('Last Action Used: `Browser`');
+                embed.setDescription('Last Action Used: `Internet Explorer`');
                 tv2.browser()
                 await i.update({ embeds: [embed] });
             }
