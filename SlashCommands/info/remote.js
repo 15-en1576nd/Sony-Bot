@@ -120,7 +120,8 @@ module.exports = {
             const embed = new MessageEmbed()
         .setTitle('Tv Remote')
         .setDescription('Select an option')
-        .setFooter('Made by Omen')
+        .addField('Last Action', 'No action has been used!', false)
+        .setFooter('Made by Omen', interaction.user.displayAvatarURL())
         .setColor('#ec2234')
         .setThumbnail('https://cdn.discordapp.com/attachments/904003288213631037/935099744047472680/Omen-Logo.png')
 
@@ -133,57 +134,60 @@ module.exports = {
         collector.on('collect', async i => {
             if (i.customId === 'left') {
                 tv.send("Left").catch(console.error)
-                embed.setDescription('Last Action Used: `Left`');
+                embed.setFields({ name: 'Last Action', value: 'Left' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'up') {
                 tv.send("Up").catch(console.error)
-                embed.setDescription('Last Action Used: `Up`');
+                embed.setFields({ name: 'Last Action', value: 'Up' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'down') {
                 tv.send("Down").catch(console.error)
-                embed.setDescription('Last Action Used: `Down`');
+                embed.setFields({ name: 'Last Action', value: 'Down' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'right') {
                 tv.send("Right").catch(console.error)
-                embed.setDescription('Last Action Used: `Right`');
+                embed.setFields({ name: 'Last Action', value: 'Right' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'on') {
                 tv.send("WakeUp").catch(console.error)
-                embed.setDescription('Last Action Used: `On`');
+                embed.setFields({ name: 'Last Action', value: 'On' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'off') {
                 tv.send("PowerOff").catch(console.error)
-                embed.setDescription('Last Action Used: `Off`');
+                embed.setFields({ name: 'Last Action', value: 'Off' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'confirm') {
                 tv.send("Confirm").catch(console.error)
-                embed.setDescription('Last Action Used: `Confirm`');
+                embed.setFields({ name: 'Last Action', value: 'Confirm' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'home') {
                 tv.send("Home").catch(console.error)
-                embed.setDescription('Last Action Used: `Home`');
+                embed.setFields({ name: 'Last Action', value: 'Home' });
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'application') {
                 tv.send("ApplicationLauncher").catch(console.error)
-                embed.setDescription('Last Action Used: `Application Launcher`');
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'rick') {
-                embed.setDescription('Last Action Used: `Rick`');
+                embed.setFields({ name: 'Last Action', value: 'Rick the troll' });
                 tv2.rickRoll()
                 await i.update({ embeds: [embed] });
             }
             if (i.customId === 'browser') {
-                embed.setDescription('Last Action Used: `Internet Explorer`');
+                embed.setFields({ name: 'Last Action', value: 'Internet Explorer' });
                 tv2.browser()
+                await i.update({ embeds: [embed] });
+            }
+            if (i.customId === 'none1') {
+                embed.setFields({ name: 'Last Action', value: 'None' });
                 await i.update({ embeds: [embed] });
             }
         });
