@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders")
 const { MessageActionRow, MessageButton } = require('discord.js');
 const { TV } = require('sony-con-troller')
+const config = require('../../config.json')
 
 module.exports = {
     ...new SlashCommandBuilder()
@@ -24,7 +25,7 @@ module.exports = {
         const tv2 = new TV('10.0.2.221')
         // const tv = new Bravia('10.0.0.161', '80', '0000'); // Yanick
         // const tv2 = new TV('10.0.0.161')
-        tv2.backendURL = ""
+        tv2.backendURL = config.api
         const text = interaction.options.getString('text');
         console.log(text, tv2.keyboard)
         await tv2.keyboard.send(text)
